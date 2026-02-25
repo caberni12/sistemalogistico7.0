@@ -838,3 +838,45 @@ window.addEventListener("beforeunload", e => {
 
 
 
+/* =====================================================
+   FIX DEFINITIVO
+   DESKTOP: INPUT "codigo" SIEMPRE HABILITADO
+   MOBILE: MANTIENE BLOQUEO + SCANNER
+   ===================================================== */
+
+// detectar mobile real
+function esMobile(){
+  return /android|iphone|ipad|ipod/i.test(navigator.userAgent);
+}
+
+// forzar comportamiento correcto
+document.addEventListener("DOMContentLoaded", () => {
+
+  const inputCodigo = document.getElementById("codigo");
+  const inputUbicacion = document.getElementById("ubicacion");
+
+  // ===== ESCRITORIO =====
+  if (!esMobile()) {
+
+    if (inputCodigo) {
+      inputCodigo.removeAttribute("readonly");
+      inputCodigo.style.pointerEvents = "auto";
+    }
+
+    if (inputUbicacion) {
+      inputUbicacion.removeAttribute("readonly");
+      inputUbicacion.style.pointerEvents = "auto";
+    }
+
+    // seguridad extra: nunca volver a bloquear en desktop
+    setInterval(() => {
+      if (inputCodigo?.hasAttribute("readonly")) {
+        inputCodigo.removeAttribute("readonly");
+      }
+    }, 500);
+
+    return; // 🔴 corta aquí en escritorio
+  }
+
+  // ===== MOBILE (no se toca tu lógica existente) =====
+});
