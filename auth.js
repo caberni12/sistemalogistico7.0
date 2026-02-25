@@ -5,7 +5,7 @@
 
 /* ========= CONFIG ========= */
 const API_AUTH =
-  "https://script.google.com/macros/s/AKfycbyYizWTsS-WDiCmOfyi34tjMT4moJt8cYr7pZtXq06lDdMd565Jno_jn3dHPlSM6Gh5/exec";
+  "https://script.google.com/macros/s/AKfycbxDUcEzMGw9LWnzn-YUV89So3AFCEnplOHQuGmzq-EV_hnIMhQvgQIPY1AxvlKJPZNx/exec";
 
 const LOGIN_PAGE = "index.html";
 
